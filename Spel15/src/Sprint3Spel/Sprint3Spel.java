@@ -19,7 +19,7 @@ import javax.swing.*;
 
 */
 
-public class Spel15 extends JFrame {
+public class Sprint3Spel extends JFrame {
 
     JPanel panel = new JPanel();
     JPanel game = new JPanel();
@@ -42,7 +42,7 @@ public class Spel15 extends JFrame {
     Button sixteen = new Button("16");
     List<Button> buttonList = new ArrayList<>();
 
-    public Spel15() {
+    public Sprint3Spel() {
         this.setLayout(new BorderLayout());
         this.add(panel, BorderLayout.SOUTH);
         this.add(game, BorderLayout.NORTH); 
@@ -121,6 +121,6 @@ public class Spel15 extends JFrame {
     }
 
     public static void main(String[] args) {
-        Spel15 s15 = new Spel15();
+        Sprint3Spel sp = new Sprint3Spel();
     }
 }
