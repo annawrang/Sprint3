@@ -27,9 +27,9 @@ public class Spel15 extends JFrame {
     Button sixteen = new Button("16");
 
     public Spel15() {
-        this.add(panel);
-        panel.setLayout(new GridLayout(2, 1));
-        panel.add(game);
+        this.setLayout(new GridLayout(2, 1));
+        this.add(game); this.add(panel); 
+
         panel.add(newGame);
 
         this.setVisible(true);
