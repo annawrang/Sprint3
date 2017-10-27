@@ -48,15 +48,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
                                         // vilket ges till knappen som blir tryckt på.
 
     List<Button> buttonList = new ArrayList<>();
-    // Har lagt till variabler row och col och en final N som används för att
-    // definiera index. Och en metod getGridButton som möjligtvis kan användas i ActionPerformed längre ner
-    private static final int N = 4;
-    int row; int col;
-    // A method to find the index of the grid button
-    private JButton getGridButton(int r, int c) {
-        int index = r * N + c;
-        return buttonList.get(index);
-    }
+    
     public Sprint3Spel() {
         this.setLayout(new BorderLayout());
         this.setLocation(1000, 50);
@@ -76,31 +68,41 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
     }
-// Inkomplete metod som ska kunna användas för att hitta position för knappen tryckt och tomma knappen
-    private JButton createGridButton(final int row, final int col) {
-        final JButton b = new JButton(row + "," + col);
-    //    b.addActionListener(new ActionListener(this)); Funkar inte ännu
-     return b;
-    }
-    
-    public void actionPerformed(ActionEvent e) {
-           JButton gb = this.getGridButton(row, col);
 
-                 
+    public void actionPerformed(ActionEvent e) {
+
+
+    if (e.getSource() == newGame) {
+            startNewGame();
+            setVisible(true);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+  }       
+  
     if(e.getSource()== one || e.getSource()== two || e.getSource()== three ||
        e.getSource()== four || e.getSource()== five || e.getSource()== six ||
        e.getSource()== seven || e.getSource()== eight || e.getSource()== nine ||
        e.getSource()== ten || e.getSource()== eleven || e.getSource()== twelve || 
        e.getSource()== thirteen || e.getSource()== fourteen || e.getSource()== fifteen){
        
-       //System.out.println("r" + row + ",c" + col + " " + (e.getSource() == gb));
-    } 
-        if (e.getSource() == newGame) {
-            startNewGame();
-            setVisible(true);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
+       int n = getSixteensIndex();
+       for(int i=0; i<buttonList.size(); i++){
+           
+       if(e.getSource() ==(JButton)buttonList.get(i) ){
+          try{
+        if(e.getSource() == (JButton)buttonList.get(n-1) || 
+                e.getSource() == (JButton)buttonList.get(n+1))
+            System.out.println("Knappen ligger brevid tomma knappen");
+        else if(e.getSource()== (JButton)buttonList.get(n-4) || 
+                e.getSource() == (JButton)buttonList.get(n+4))
+            System.out.println("Knappen ligger brevid tomma knappen också");
+          }catch(ArrayIndexOutOfBoundsException aiob){
+           }
+          catch(IndexOutOfBoundsException iob){
+          }
+       }
+    }  
             
-        } else if (e.getSource().equals(one)) {    // TempEmpty får ones värde. One's värden blir tom text + svar. tempEmpty pekar på one.
+    } else if (e.getSource().equals(one)) {    // TempEmpty får ones värde. One's värden blir tom text + svar. tempEmpty pekar på one.
             // Här skulle vi kunna anropa en metod som visar gridpositionen av sixteen om en knapp trycks 
             // jämför med tomma knappen.
             /*
@@ -227,10 +229,19 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         for (Button b : buttonList) {
             game.add(b);
         }
-        tempEmpty = sixteen;
+      tempEmpty = sixteen;      
     }
-
-    public List<Button> createButtonList() {
+    public int getSixteensIndex(){
+        int position=0;
+        for(int i=0; i<buttonList.size(); i++)
+//          for(int j=0; j<buttonList.size(); j++)
+       if(sixteen ==(JButton)buttonList.get(i) )
+          position = i;
+       return position;
+    }
+   
+    
+        public List<Button> createButtonList() {
         buttonList = new ArrayList<>();
         buttonList.add(one);
         one.setText("1");
