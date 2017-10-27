@@ -13,13 +13,15 @@ import javax.swing.*;
 
 /* 
     Vi behöver 
-    1 ActionListener - anonym klass kanske?
-    2. sätta ut actionListeners för alla knappar
-    3. 
+    1 Anna: ActionListener - anonym klass kanske? -Akiny: Done
+    2.Anna: sätta ut actionListeners för alla knappar - Akinyi: done
+    3. Akinyi: Se småkommentarer nedan
+    4. Akinyi: Jag fortsätter att jobba på actionPerformed när en knapp trycks 
+      samt hur vi ska byta plats med den tomma. Du ligger särkert före i detta:)
 
 */
 
-public class Sprint3Spel extends JFrame {
+public class Sprint3Spel extends JFrame implements ActionListener{
 
     JPanel panel = new JPanel();
     JPanel game = new JPanel();
@@ -44,26 +46,42 @@ public class Sprint3Spel extends JFrame {
 
     public Sprint3Spel() {
         this.setLayout(new BorderLayout());
+        this.setLocation(1000,50); //Vill kunna nå spelet medans jag testar det
         this.add(panel, BorderLayout.SOUTH);
         this.add(game, BorderLayout.NORTH); 
         panel.add(newGame);
      
         game.setLayout(new GridLayout(4,4));
         startNewGame();
-
+        newGame.addActionListener(this);
+        one.addActionListener(this);  two.addActionListener(this); //Mera kompakt?
+        three.addActionListener(this);four.addActionListener(this);
+        five.addActionListener(this); six.addActionListener(this);
+        seven.addActionListener(this);eight.addActionListener(this);
+        nine.addActionListener(this); ten.addActionListener(this);
+        eleven.addActionListener(this);twelve.addActionListener(this);
+        thirteen.addActionListener(this);fourteen.addActionListener(this);
+        fifteen.addActionListener(this);sixteen.addActionListener(this);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
     }
-
-
+     
+    public void actionPerformed(ActionEvent e) {
+      if(e.getSource()== newGame)
+        startNewGame();
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+    }
+    
     public void startNewGame(){
         buttonList = createButtonList();
         Collections.shuffle(buttonList);
-        for(Button b: buttonList){
+        for(Button b: buttonList)
             game.add(b);
-        }
+     
     }
+    
     
 
     public List<Button> createButtonList() {
