@@ -22,9 +22,8 @@ import javax.swing.*;
     att sätta ditt en temp-knapp som alltid får värdet av den knappen som blir svart,
     så kan man nå den tomma knappen utan att behöva gå genom en forloop och en lista.
 
-*/
-
-public class Sprint3Spel extends JFrame implements ActionListener{
+ */
+public class Sprint3Spel extends JFrame implements ActionListener {
 
     JPanel panel = new JPanel();
     JPanel game = new JPanel();
@@ -45,21 +44,23 @@ public class Sprint3Spel extends JFrame implements ActionListener{
     Button fourteen = new Button("14");
     Button fifteen = new Button("15");
     Button sixteen = new Button("16");
-    Button temp = new Button(""); // Den här ska alltid ha värdet av empty(sixteen till att börja med)
+    Button tempEmpty = new Button(""); // Den här ska alltid ha värdet av empty(sixteen till att börja med),
+                                        // vilket ges till knappen som blir tryckt på.
+
     List<Button> buttonList = new ArrayList<>();
 
     public Sprint3Spel() {
         this.setLayout(new BorderLayout());
-        this.setLocation(1000,50);
+        this.setLocation(1000, 50);
         this.add(panel, BorderLayout.SOUTH);
-        this.add(game, BorderLayout.NORTH); 
+        this.add(game, BorderLayout.NORTH);
         panel.add(newGame);
-     
-        game.setLayout(new GridLayout(4,4));
+
+        game.setLayout(new GridLayout(4, 4));
         startNewGame();
         newGame.addActionListener(this);
-        
-        for(Button b: buttonList){   // Ännu mer kompakt?
+
+        for (Button b : buttonList) {   // Ännu mer kompakt?
             b.addActionListener(this);
         }
 
@@ -67,23 +68,65 @@ public class Sprint3Spel extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
     }
-     
+
     public void actionPerformed(ActionEvent e) {
-      if(e.getSource()== newGame)
-        startNewGame();
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        if (e.getSource() == newGame) {
+            startNewGame();
+            setVisible(true);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+        } else if (e.getSource().equals(one)) {    // TempEmpty får ones värde. One's värden blir tom text + svar. tempEmpty pekar på one.
+            tempEmpty.setText(one.getText());
+            tempEmpty.setBackground(one.getBackground());
+            one.setBackground(Color.BLACK);
+            one.setText(" ");
+            tempEmpty = one; 
+        }
+        else if(e.getSource().equals(two)){
+            tempEmpty.setText(two.getText());
+            tempEmpty.setBackground(two.getBackground());
+            two.setBackground(Color.BLACK);
+            two.setText(" ");
+            tempEmpty = two;
+        }
+        else if(e.getSource().equals(three)){
+            tempEmpty.setText(three.getText());
+            tempEmpty.setBackground(three.getBackground());
+            three.setBackground(Color.BLACK);
+            three.setText(" ");
+            tempEmpty = three;
+        }
+        else if(e.getSource().equals(four)){
+            tempEmpty.setText(four.getText());
+            tempEmpty.setBackground(four.getBackground());
+            four.setBackground(Color.BLACK);
+            four.setText(" ");
+            tempEmpty = four;
+        }
+        else if(e.getSource().equals(five)){
+            tempEmpty.setText(five.getText());
+            tempEmpty.setBackground(five.getBackground());
+            five.setBackground(Color.BLACK);
+            five.setText(" ");
+            tempEmpty = five;
+        }
+        else if(e.getSource().equals(six)){
+            tempEmpty.setText(six.getText());
+            tempEmpty.setBackground(six.getBackground());
+            six.setBackground(Color.BLACK);
+            six.setText(" ");
+            tempEmpty = six;
+        }
+
     }
-    
-    public void startNewGame(){
+
+    public void startNewGame() {
         buttonList = createButtonList();
         Collections.shuffle(buttonList);
-        for(Button b: buttonList)
+        for (Button b : buttonList) {
             game.add(b);
-     
+        }
+        tempEmpty = sixteen;
     }
-    
-    
 
     public List<Button> createButtonList() {
         buttonList = new ArrayList<>();
