@@ -47,6 +47,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     protected String allNumbers = "";
     List<Button> buttonList = new ArrayList<>();
 
+    
     public Sprint3Spel() {
         this.setLayout(new BorderLayout());
         this.setLocation(1000, 50);
