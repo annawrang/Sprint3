@@ -45,7 +45,7 @@ public class Sprint3Spel extends JFrame implements ActionListener{
     Button fourteen = new Button("14");
     Button fifteen = new Button("15");
     Button sixteen = new Button("16");
-    Button temp = new Button("");
+    Button temp = new Button(""); // Den här ska alltid ha värdet av empty(sixteen till att börja med)
     List<Button> buttonList = new ArrayList<>();
 
     public Sprint3Spel() {
