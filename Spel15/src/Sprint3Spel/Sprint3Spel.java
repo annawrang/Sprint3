@@ -13,11 +13,14 @@ import javax.swing.*;
 
 /* 
     Vi behöver 
-    1 Anna: ActionListener - anonym klass kanske? -Akiny: Done
-    2.Anna: sätta ut actionListeners för alla knappar - Akinyi: done
-    3. Akinyi: Se småkommentarer nedan
     4. Akinyi: Jag fortsätter att jobba på actionPerformed när en knapp trycks 
       samt hur vi ska byta plats med den tomma. Du ligger särkert före i detta:)
+    5. Anna: Jag tror jag kommit på ett sätt att lösa byt-btick-grejen, men det är
+    ingen snygg lösning. Jag kan testa det i en ny branch och om det funkar visar jag dig :)
+    Mitt problem är att jag aldrig lyckas nå den tomma rutan i ett actionPerformed,
+    troligtvis för att jag försöker nå den genom en lista. Därför tänkte jag testa
+    att sätta ditt en temp-knapp som alltid får värdet av den knappen som blir svart,
+    så kan man nå den tomma knappen utan att behöva gå genom en forloop och en lista.
 
 */
 
@@ -42,11 +45,12 @@ public class Sprint3Spel extends JFrame implements ActionListener{
     Button fourteen = new Button("14");
     Button fifteen = new Button("15");
     Button sixteen = new Button("16");
+    Button temp = new Button("");
     List<Button> buttonList = new ArrayList<>();
 
     public Sprint3Spel() {
         this.setLayout(new BorderLayout());
-        this.setLocation(1000,50); //Vill kunna nå spelet medans jag testar det
+        this.setLocation(1000,50);
         this.add(panel, BorderLayout.SOUTH);
         this.add(game, BorderLayout.NORTH); 
         panel.add(newGame);
@@ -54,14 +58,11 @@ public class Sprint3Spel extends JFrame implements ActionListener{
         game.setLayout(new GridLayout(4,4));
         startNewGame();
         newGame.addActionListener(this);
-        one.addActionListener(this);  two.addActionListener(this); //Mera kompakt?
-        three.addActionListener(this);four.addActionListener(this);
-        five.addActionListener(this); six.addActionListener(this);
-        seven.addActionListener(this);eight.addActionListener(this);
-        nine.addActionListener(this); ten.addActionListener(this);
-        eleven.addActionListener(this);twelve.addActionListener(this);
-        thirteen.addActionListener(this);fourteen.addActionListener(this);
-        fifteen.addActionListener(this);sixteen.addActionListener(this);
+        
+        for(Button b: buttonList){   // Ännu mer kompakt?
+            b.addActionListener(this);
+        }
+
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
