@@ -13,14 +13,11 @@ import javax.swing.*;
 
 /* 
     Vi behöver 
-    4. Akinyi: Jag fortsätter att jobba på actionPerformed när en knapp trycks 
-      samt hur vi ska byta plats med den tomma. Du ligger särkert före i detta:)
-    5. Anna: Jag tror jag kommit på ett sätt att lösa byt-btick-grejen, men det är
-    ingen snygg lösning. Jag kan testa det i en ny branch och om det funkar visar jag dig :)
-    Mitt problem är att jag aldrig lyckas nå den tomma rutan i ett actionPerformed,
-    troligtvis för att jag försöker nå den genom en lista. Därför tänkte jag testa
-    att sätta ditt en temp-knapp som alltid får värdet av den knappen som blir svart,
-    så kan man nå den tomma knappen utan att behöva gå genom en forloop och en lista.
+    4. Akinyi: 
+
+    5. Anna:  jag la till några metoder som räknar ut om man har vunnit och då
+                skriver ut det som meddelande :) OBS - jag ändrade i startNewGame
+                för att testa metoden, när du testat kan vi ändra tillbaka
 
  */
 public class Sprint3Spel extends JFrame implements ActionListener {
@@ -44,9 +41,10 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     Button fourteen = new Button("14");
     Button fifteen = new Button("15");
     Button sixteen = new Button("16");
-    Button tempEmpty = new Button(""); // Den här ska alltid ha värdet av empty(sixteen till att börja med),
-                                        // vilket ges till knappen som blir tryckt på.
-
+    Button tempEmpty = new Button("");
+    protected int emptyValue;
+    protected boolean hasWon = false;
+    protected String allNumbers = "";
     List<Button> buttonList = new ArrayList<>();
 
     public Sprint3Spel() {
@@ -60,7 +58,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         startNewGame();
         newGame.addActionListener(this);
 
-        for (Button b : buttonList) {   // Ännu mer kompakt?
+        for (Button b : buttonList) {
             b.addActionListener(this);
         }
 
@@ -69,130 +67,133 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         this.pack();
     }
 
+    public void checkIfWon() {  // Kollar att knapparna ligger i ordning
+        allNumbers = "";
+        for (Button b : buttonList) {
+            allNumbers += b.getText();
+        }
+        if (allNumbers.trim().equals("123456789101112131415")) {
+            hasWon = true;
+        }
+    }
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newGame) {
+            newGame.setText("Nytt spel");
             startNewGame();
             setVisible(true);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
-        } else if (e.getSource().equals(one)) {    // TempEmpty får ones värde. One's värden blir tom text + svar. tempEmpty pekar på one.
+        } else if (e.getSource().equals(one)) {
+            checkIfWon();     // Anropar den nya metoden
+            if (hasWon) {
+                changeButtonText();  // anropar metod som ändrar texten på newGame
+            }
             tempEmpty.setText(one.getText());
             tempEmpty.setBackground(one.getBackground());
             one.setBackground(Color.BLACK);
-            one.setText(" ");
-            tempEmpty = one; 
-        }
-        else if(e.getSource().equals(two)){
+            one.setText(" "); 
+            tempEmpty = one;
+
+        } else if (e.getSource().equals(two)) {
             tempEmpty.setText(two.getText());
             tempEmpty.setBackground(two.getBackground());
             two.setBackground(Color.BLACK);
             two.setText(" ");
             tempEmpty = two;
-        }
-        else if(e.getSource().equals(three)){
+        } else if (e.getSource().equals(three)) {
             tempEmpty.setText(three.getText());
             tempEmpty.setBackground(three.getBackground());
             three.setBackground(Color.BLACK);
             three.setText(" ");
             tempEmpty = three;
-        }
-        else if(e.getSource().equals(four)){
+        } else if (e.getSource().equals(four)) {
             tempEmpty.setText(four.getText());
             tempEmpty.setBackground(four.getBackground());
             four.setBackground(Color.BLACK);
             four.setText(" ");
             tempEmpty = four;
-        }
-        else if(e.getSource().equals(five)){
+        } else if (e.getSource().equals(five)) {
             tempEmpty.setText(five.getText());
             tempEmpty.setBackground(five.getBackground());
             five.setBackground(Color.BLACK);
             five.setText(" ");
             tempEmpty = five;
-        }
-        else if(e.getSource().equals(six)){
+        } else if (e.getSource().equals(six)) {
             tempEmpty.setText(six.getText());
             tempEmpty.setBackground(six.getBackground());
             six.setBackground(Color.BLACK);
             six.setText(" ");
             tempEmpty = six;
-        }
-        else if(e.getSource().equals(seven)){
+        } else if (e.getSource().equals(seven)) {
             tempEmpty.setText(seven.getText());
             tempEmpty.setBackground(seven.getBackground());
             seven.setBackground(Color.BLACK);
             seven.setText(" ");
             tempEmpty = seven;
-        }
-        else if(e.getSource().equals(eight)){
+        } else if (e.getSource().equals(eight)) {
             tempEmpty.setText(eight.getText());
             tempEmpty.setBackground(eight.getBackground());
             eight.setBackground(Color.BLACK);
             eight.setText(" ");
             tempEmpty = eight;
-        }
-        else if(e.getSource().equals(nine)){
+        } else if (e.getSource().equals(nine)) {
             tempEmpty.setText(nine.getText());
             tempEmpty.setBackground(nine.getBackground());
             nine.setBackground(Color.BLACK);
             nine.setText(" ");
             tempEmpty = nine;
-        }  
-        else if(e.getSource().equals(ten)){
+        } else if (e.getSource().equals(ten)) {
             tempEmpty.setText(ten.getText());
             tempEmpty.setBackground(ten.getBackground());
             ten.setBackground(Color.BLACK);
             ten.setText(" ");
             tempEmpty = ten;
-        } 
-        else if(e.getSource().equals(eleven)){
+        } else if (e.getSource().equals(eleven)) {
             tempEmpty.setText(eleven.getText());
             tempEmpty.setBackground(eleven.getBackground());
             eleven.setBackground(Color.BLACK);
             eleven.setText(" ");
             tempEmpty = eleven;
-        }       
-        else if(e.getSource().equals(twelve)){
+        } else if (e.getSource().equals(twelve)) {
             tempEmpty.setText(twelve.getText());
             tempEmpty.setBackground(twelve.getBackground());
             twelve.setBackground(Color.BLACK);
             twelve.setText(" ");
             tempEmpty = twelve;
-        }   
-        else if(e.getSource().equals(thirteen)){
+        } else if (e.getSource().equals(thirteen)) {
             tempEmpty.setText(thirteen.getText());
             tempEmpty.setBackground(thirteen.getBackground());
             thirteen.setBackground(Color.BLACK);
             thirteen.setText(" ");
             tempEmpty = thirteen;
-        }   
-        else if(e.getSource().equals(fourteen)){
+        } else if (e.getSource().equals(fourteen)) {
             tempEmpty.setText(fourteen.getText());
             tempEmpty.setBackground(fourteen.getBackground());
             fourteen.setBackground(Color.BLACK);
             fourteen.setText(" ");
             tempEmpty = fourteen;
-        }           
-        else if(e.getSource().equals(fifteen)){
+        } else if (e.getSource().equals(fifteen)) {
             tempEmpty.setText(fifteen.getText());
             tempEmpty.setBackground(fifteen.getBackground());
             fifteen.setBackground(Color.BLACK);
             fifteen.setText(" ");
             tempEmpty = fifteen;
-        }         
-        else if(e.getSource().equals(sixteen)){
+        } else if (e.getSource().equals(sixteen)) {
             tempEmpty.setText(sixteen.getText());
             tempEmpty.setBackground(sixteen.getBackground());
             sixteen.setBackground(Color.BLACK);
             sixteen.setText(" ");
             tempEmpty = sixteen;
-        }      
-        
-        
+        }
+
     }
 
+    public void changeButtonText(){
+        newGame.setText("Grattis! Du har vunnit!");
+    }
     public void startNewGame() {
         buttonList = createButtonList();
-        Collections.shuffle(buttonList);
+        //  Collections.shuffle(buttonList);
         for (Button b : buttonList) {
             game.add(b);
         }

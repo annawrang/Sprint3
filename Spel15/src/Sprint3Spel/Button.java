@@ -11,10 +11,4 @@ public class Button extends JButton{
         super(text);
     }
     
-    // Metod man kan anropa som gör knappen man klickar på den nya tomma
-    public void newEmpty(){
-        this.setBackground(Color.BLACK);
-        this.setText(" ");
-    }
-    
 }
