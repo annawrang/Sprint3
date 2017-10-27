@@ -11,4 +11,9 @@ public class Button extends JButton{
         super(text);
     }
     
+    public void makeEmpty(){
+        this.setText("");
+        this.setBackground(Color.BLACK);
+    }
+    
 }
