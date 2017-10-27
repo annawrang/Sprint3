@@ -78,7 +78,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     }
 // Inkomplete metod som ska kunna användas för att hitta position för knappen tryckt och tomma knappen
     private JButton createGridButton(final int row, final int col) {
-        final JButton b = new JButton("r" + row + ",c" + col);
+        final JButton b = new JButton(row + "," + col);
     //    b.addActionListener(new ActionListener(this)); Funkar inte ännu
      return b;
     }
@@ -87,12 +87,13 @@ public class Sprint3Spel extends JFrame implements ActionListener {
            JButton gb = this.getGridButton(row, col);
 
                  
-    if(e.getSource()== one && e.getSource()== two && e.getSource()== three &&
-       e.getSource()== four && e.getSource()== five && e.getSource()== six &&
-       e.getSource()== seven && e.getSource()== eight && e.getSource()== nine &&
-       e.getSource()== ten && e.getSource()== eleven && e.getSource()== twelve && 
-       e.getSource()== thirteen && e.getSource()== fourteen && e.getSource()== fifteen){
-       System.out.println("r" + row + ",c" + col + " " + (e.getSource() == gb));
+    if(e.getSource()== one || e.getSource()== two || e.getSource()== three ||
+       e.getSource()== four || e.getSource()== five || e.getSource()== six ||
+       e.getSource()== seven || e.getSource()== eight || e.getSource()== nine ||
+       e.getSource()== ten || e.getSource()== eleven || e.getSource()== twelve || 
+       e.getSource()== thirteen || e.getSource()== fourteen || e.getSource()== fifteen){
+       
+       //System.out.println("r" + row + ",c" + col + " " + (e.getSource() == gb));
     } 
         if (e.getSource() == newGame) {
             startNewGame();
