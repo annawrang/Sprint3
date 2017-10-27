@@ -15,5 +15,9 @@ public class Button extends JButton{
         this.setText("");
         this.setBackground(Color.BLACK);
     }
+    public void setValues(Button b){
+        this.setText(b.getText());
+        this.setBackground(b.getBackground());
+    }
     
 }

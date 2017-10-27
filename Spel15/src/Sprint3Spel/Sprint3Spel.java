@@ -47,7 +47,6 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     protected String allNumbers = "";
     List<Button> buttonList = new ArrayList<>();
 
-    
     public Sprint3Spel() {
         this.setLayout(new BorderLayout());
         this.setLocation(1000, 50);
@@ -85,97 +84,82 @@ public class Sprint3Spel extends JFrame implements ActionListener {
             setVisible(true);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
         } else if (e.getSource().equals(one)) {
-            checkIfWon();     // Anropar den nya metoden
-            if (hasWon) {
-                changeButtonText();  // anropar metod som ändrar texten på newGame
-            }
-            tempEmpty.setText(one.getText());
-            tempEmpty.setBackground(one.getBackground());
+            tempEmpty.setValues(one);
             one.makeEmpty();
             tempEmpty = one;
+            checkIfWon();
+            if (hasWon) {
+                changeButtonText();
+            }
 
         } else if (e.getSource().equals(two)) {
-            tempEmpty.setText(two.getText());
-            tempEmpty.setBackground(two.getBackground());
+            tempEmpty.setValues(two);
             two.makeEmpty();
             tempEmpty = two;
         } else if (e.getSource().equals(three)) {
-            tempEmpty.setText(three.getText());
-            tempEmpty.setBackground(three.getBackground());
+            tempEmpty.setValues(three);
             three.makeEmpty();
             tempEmpty = three;
         } else if (e.getSource().equals(four)) {
-            tempEmpty.setText(four.getText());
-            tempEmpty.setBackground(four.getBackground());
+            tempEmpty.setValues(four);
             four.makeEmpty();
             tempEmpty = four;
         } else if (e.getSource().equals(five)) {
-            tempEmpty.setText(five.getText());
-            tempEmpty.setBackground(five.getBackground());
+            tempEmpty.setValues(five);
             five.makeEmpty();
             tempEmpty = five;
         } else if (e.getSource().equals(six)) {
-            tempEmpty.setText(six.getText());
-            tempEmpty.setBackground(six.getBackground());
+            tempEmpty.setValues(six);
             six.makeEmpty();
             tempEmpty = six;
         } else if (e.getSource().equals(seven)) {
-            tempEmpty.setText(seven.getText());
-            tempEmpty.setBackground(seven.getBackground());
+            tempEmpty.setValues(seven);
             seven.makeEmpty();
             tempEmpty = seven;
         } else if (e.getSource().equals(eight)) {
-            tempEmpty.setText(eight.getText());
-            tempEmpty.setBackground(eight.getBackground());
+            tempEmpty.setValues(eight);
             eight.makeEmpty();
             tempEmpty = eight;
         } else if (e.getSource().equals(nine)) {
-            tempEmpty.setText(nine.getText());
-            tempEmpty.setBackground(nine.getBackground());
+            tempEmpty.setValues(nine);
             nine.makeEmpty();
             tempEmpty = nine;
         } else if (e.getSource().equals(ten)) {
-            tempEmpty.setText(ten.getText());
-            tempEmpty.setBackground(ten.getBackground());
+            tempEmpty.setValues(ten);
             ten.makeEmpty();
             tempEmpty = ten;
         } else if (e.getSource().equals(eleven)) {
-            tempEmpty.setText(eleven.getText());
-            tempEmpty.setBackground(eleven.getBackground());
+            tempEmpty.setValues(eleven);
             eleven.makeEmpty();
             tempEmpty = eleven;
         } else if (e.getSource().equals(twelve)) {
-            tempEmpty.setText(twelve.getText());
-            tempEmpty.setBackground(twelve.getBackground());
+            tempEmpty.setValues(twelve);
             twelve.makeEmpty();
             tempEmpty = twelve;
         } else if (e.getSource().equals(thirteen)) {
-            tempEmpty.setText(thirteen.getText());
-            tempEmpty.setBackground(thirteen.getBackground());
+            tempEmpty.setValues(thirteen);
             thirteen.makeEmpty();
             tempEmpty = thirteen;
         } else if (e.getSource().equals(fourteen)) {
-            tempEmpty.setText(fourteen.getText());
-            tempEmpty.setBackground(fourteen.getBackground());
+            tempEmpty.setValues(fourteen);
             fourteen.makeEmpty();
             tempEmpty = fourteen;
         } else if (e.getSource().equals(fifteen)) {
-            tempEmpty.setText(fifteen.getText());
-            tempEmpty.setBackground(fifteen.getBackground());
+            tempEmpty.setValues(fifteen);
             fifteen.makeEmpty();
             tempEmpty = fifteen;
         } else if (e.getSource().equals(sixteen)) {
-            tempEmpty.setText(sixteen.getText());
-            tempEmpty.setBackground(sixteen.getBackground());
+            tempEmpty.setValues(sixteen);
             sixteen.makeEmpty();
             tempEmpty = sixteen;
         }
 
     }
 
-    public void changeButtonText(){
+    public void changeButtonText() {
         newGame.setText("Grattis! Du har vunnit!");
     }
+
     public void startNewGame() {
         buttonList = createButtonList();
         Collections.shuffle(buttonList);
