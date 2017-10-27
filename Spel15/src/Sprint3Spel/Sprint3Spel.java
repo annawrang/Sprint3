@@ -116,7 +116,78 @@ public class Sprint3Spel extends JFrame implements ActionListener {
             six.setText(" ");
             tempEmpty = six;
         }
-
+        else if(e.getSource().equals(seven)){
+            tempEmpty.setText(seven.getText());
+            tempEmpty.setBackground(seven.getBackground());
+            seven.setBackground(Color.BLACK);
+            seven.setText(" ");
+            tempEmpty = seven;
+        }
+        else if(e.getSource().equals(eight)){
+            tempEmpty.setText(eight.getText());
+            tempEmpty.setBackground(eight.getBackground());
+            eight.setBackground(Color.BLACK);
+            eight.setText(" ");
+            tempEmpty = eight;
+        }
+        else if(e.getSource().equals(nine)){
+            tempEmpty.setText(nine.getText());
+            tempEmpty.setBackground(nine.getBackground());
+            nine.setBackground(Color.BLACK);
+            nine.setText(" ");
+            tempEmpty = nine;
+        }  
+        else if(e.getSource().equals(ten)){
+            tempEmpty.setText(ten.getText());
+            tempEmpty.setBackground(ten.getBackground());
+            ten.setBackground(Color.BLACK);
+            ten.setText(" ");
+            tempEmpty = ten;
+        } 
+        else if(e.getSource().equals(eleven)){
+            tempEmpty.setText(eleven.getText());
+            tempEmpty.setBackground(eleven.getBackground());
+            eleven.setBackground(Color.BLACK);
+            eleven.setText(" ");
+            tempEmpty = eleven;
+        }       
+        else if(e.getSource().equals(twelve)){
+            tempEmpty.setText(twelve.getText());
+            tempEmpty.setBackground(twelve.getBackground());
+            twelve.setBackground(Color.BLACK);
+            twelve.setText(" ");
+            tempEmpty = twelve;
+        }   
+        else if(e.getSource().equals(thirteen)){
+            tempEmpty.setText(thirteen.getText());
+            tempEmpty.setBackground(thirteen.getBackground());
+            thirteen.setBackground(Color.BLACK);
+            thirteen.setText(" ");
+            tempEmpty = thirteen;
+        }   
+        else if(e.getSource().equals(fourteen)){
+            tempEmpty.setText(fourteen.getText());
+            tempEmpty.setBackground(fourteen.getBackground());
+            fourteen.setBackground(Color.BLACK);
+            fourteen.setText(" ");
+            tempEmpty = fourteen;
+        }           
+        else if(e.getSource().equals(fifteen)){
+            tempEmpty.setText(fifteen.getText());
+            tempEmpty.setBackground(fifteen.getBackground());
+            fifteen.setBackground(Color.BLACK);
+            fifteen.setText(" ");
+            tempEmpty = fifteen;
+        }         
+        else if(e.getSource().equals(sixteen)){
+            tempEmpty.setText(sixteen.getText());
+            tempEmpty.setBackground(sixteen.getBackground());
+            sixteen.setBackground(Color.BLACK);
+            sixteen.setText(" ");
+            tempEmpty = sixteen;
+        }      
+        
+        
     }
 
     public void startNewGame() {
