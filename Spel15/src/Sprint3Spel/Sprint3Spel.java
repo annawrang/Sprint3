@@ -2,6 +2,8 @@ package Sprint3Spel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -164,6 +166,8 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         buttonList = createButtonList();
         Collections.shuffle(buttonList);
         for (Button b : buttonList) {
+            b.setPreferredSize(new Dimension(80,60));
+            b.setFont(new Font("Helvetica", Font.BOLD, 20));
             game.add(b);
         }
         tempEmpty = sixteen;
