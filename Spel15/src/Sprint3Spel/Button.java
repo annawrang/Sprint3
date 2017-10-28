@@ -38,11 +38,26 @@ public class Button extends JButton {
     }
 
     public boolean isNextTo(int value) {
-        if (this.getNumValue() == (value + 1)
-                || this.getNumValue() == (value - 1)
-                || this.getNumValue() == (value + 4)
-                || this.getNumValue() == (value - 4)) {
-            return true;
+        if (value == 5 || value == 9 || value == 13) {
+            if (this.getNumValue() == (value + 1)
+                    || this.getNumValue() == (value + 4)
+                    || this.getNumValue() == (value - 4)) {
+                return true;
+            }
+        } else if (value == 4 || value == 8 || value == 12) {
+            if(this.getNumValue() == (value-1) ||
+                    this.getNumValue() == (value+4) ||
+                    this.getNumValue() == (value-4)){
+                return true;
+            }
+            
+        } else {
+            if(this.getNumValue() == (value + 1)
+                    || this.getNumValue() == (value - 1)
+                    || this.getNumValue() == (value + 4)
+                    || this.getNumValue() == (value - 4)) {
+                return true;
+            }
         }
         return false;
     }
