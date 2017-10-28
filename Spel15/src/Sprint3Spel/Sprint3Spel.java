@@ -57,12 +57,8 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         panel.add(newGame);
 
         game.setLayout(new GridLayout(4, 4));
-        startNewGame();
+        startNewGame();    // crates all buttons, adds to game
         newGame.addActionListener(this);
-
-        for (Button b : buttonList) {
-            b.addActionListener(this);
-        }
 
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -89,11 +85,6 @@ public class Sprint3Spel extends JFrame implements ActionListener {
             tempEmpty.setValues(one);
             one.makeEmpty();
             tempEmpty = one;
-            checkIfWon();
-            if (hasWon) {
-                changeButtonText();
-            }
-
         } else if (e.getSource().equals(two)) {
             tempEmpty.setValues(two);
             two.makeEmpty();
@@ -155,6 +146,10 @@ public class Sprint3Spel extends JFrame implements ActionListener {
             sixteen.makeEmpty();
             tempEmpty = sixteen;
         }
+        checkIfWon();  // kollar om man vunnit
+        if (hasWon) {
+            changeButtonText(); // ändrar newGame's text till "Grattis!"
+        }
 
     }
 
@@ -166,9 +161,10 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         buttonList = createButtonList();
         Collections.shuffle(buttonList);
         for (Button b : buttonList) {
-            b.setPreferredSize(new Dimension(80,60));
+            b.setPreferredSize(new Dimension(80, 60));
             b.setFont(new Font("Helvetica", Font.BOLD, 20));
             game.add(b);
+            b.addActionListener(this);
         }
         tempEmpty = sixteen;
     }
