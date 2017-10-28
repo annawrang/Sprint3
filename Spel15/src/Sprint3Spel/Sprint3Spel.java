@@ -13,15 +13,6 @@ import java.util.List;
 import java.util.Locale;
 import javax.swing.*;
 
-/* 
-    Vi behöver 
-    4. Akinyi: 
-
-    5. Anna:  jag la till några metoder som räknar ut om man har vunnit och då
-                skriver ut det som meddelande :) OBS - jag ändrade i startNewGame
-                för att testa metoden, när du testat kan vi ändra tillbaka
-
- */
 public class Sprint3Spel extends JFrame implements ActionListener {
 
     JPanel panel = new JPanel();
@@ -75,6 +66,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         }
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newGame) {
             newGame.setText("Nytt spel");
@@ -82,69 +74,101 @@ public class Sprint3Spel extends JFrame implements ActionListener {
             setVisible(true);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
         } else if (e.getSource().equals(one)) {
-            tempEmpty.setValues(one);
-            one.makeEmpty();
-            tempEmpty = one;
+            if (one.isNextTo(tempEmpty.getNumValue())) {
+                tempEmpty.setValues(one);
+                one.makeEmpty();
+                tempEmpty = one;
+            }
+
         } else if (e.getSource().equals(two)) {
-            tempEmpty.setValues(two);
-            two.makeEmpty();
-            tempEmpty = two;
+            if (two.isNextTo(tempEmpty.getNumValue())) {
+                tempEmpty.setValues(two);
+                two.makeEmpty();
+                tempEmpty = two;
+            }
         } else if (e.getSource().equals(three)) {
+            if (three.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(three);
             three.makeEmpty();
-            tempEmpty = three;
+            tempEmpty = three; }
         } else if (e.getSource().equals(four)) {
+            if (four.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(four);
             four.makeEmpty();
             tempEmpty = four;
+            }
         } else if (e.getSource().equals(five)) {
+            if (five.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(five);
             five.makeEmpty();
             tempEmpty = five;
+            }
         } else if (e.getSource().equals(six)) {
+            if (six.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(six);
             six.makeEmpty();
             tempEmpty = six;
+            }
         } else if (e.getSource().equals(seven)) {
+            if (seven.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(seven);
             seven.makeEmpty();
             tempEmpty = seven;
+            }
         } else if (e.getSource().equals(eight)) {
+            if (eight.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(eight);
             eight.makeEmpty();
             tempEmpty = eight;
+            }
         } else if (e.getSource().equals(nine)) {
+            if (nine.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(nine);
             nine.makeEmpty();
             tempEmpty = nine;
+            }
         } else if (e.getSource().equals(ten)) {
+            if (ten.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(ten);
             ten.makeEmpty();
             tempEmpty = ten;
+            }
         } else if (e.getSource().equals(eleven)) {
+            if (eleven.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(eleven);
             eleven.makeEmpty();
             tempEmpty = eleven;
+            }
         } else if (e.getSource().equals(twelve)) {
+            if (twelve.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(twelve);
             twelve.makeEmpty();
             tempEmpty = twelve;
+            }
         } else if (e.getSource().equals(thirteen)) {
+            if (thirteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(thirteen);
             thirteen.makeEmpty();
             tempEmpty = thirteen;
+            }
         } else if (e.getSource().equals(fourteen)) {
+            if (fourteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(fourteen);
             fourteen.makeEmpty();
             tempEmpty = fourteen;
+            }
         } else if (e.getSource().equals(fifteen)) {
+            if (fifteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(fifteen);
             fifteen.makeEmpty();
             tempEmpty = fifteen;
+            }
         } else if (e.getSource().equals(sixteen)) {
+            if (sixteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(sixteen);
             sixteen.makeEmpty();
             tempEmpty = sixteen;
+            }
         }
         checkIfWon();  // kollar om man vunnit
         if (hasWon) {
@@ -160,11 +184,15 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     public void startNewGame() {
         buttonList = createButtonList();
         Collections.shuffle(buttonList);
+        for (int i = 0; i < buttonList.size(); i++) {
+            buttonList.get(i).setNumValue(i + 1);
+        }
         for (Button b : buttonList) {
             b.setPreferredSize(new Dimension(80, 60));
             b.setFont(new Font("Helvetica", Font.BOLD, 20));
             game.add(b);
             b.addActionListener(this);
+
         }
         tempEmpty = sixteen;
     }
