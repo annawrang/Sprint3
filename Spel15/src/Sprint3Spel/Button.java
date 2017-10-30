@@ -4,7 +4,6 @@ import java.awt.Color;
 import javax.swing.*;
 
 public class Button extends JButton {
-
     protected int numValue;
 
     public Button() {
