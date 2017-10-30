@@ -33,8 +33,8 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     Button thirteen = new Button("13");
     Button fourteen = new Button("14");
     Button fifteen = new Button("15");
-    Button sixteen = new Button("16");
-    Button tempEmpty = new Button("");
+    Button sixteen = new Button(" ");
+    Button tempEmpty = new Button(" ");
     protected int emptyValue;
     protected boolean hasWon = false;
     protected String allNumbers = "";
@@ -71,108 +71,78 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         if (e.getSource() == newGame) {
             newGame.setText("Nytt spel");
             startNewGame();
+            hasWon = false;
             setVisible(true);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
         } else if (e.getSource().equals(one)) {
-            if (one.isNextTo(tempEmpty.getNumValue())) {
-                tempEmpty.setValues(one);
-                one.makeEmpty();
-                tempEmpty = one;
-            }
-
+            tempEmpty.setValues(one);
+            one.makeEmpty();
+            tempEmpty = one;
         } else if (e.getSource().equals(two)) {
-            if (two.isNextTo(tempEmpty.getNumValue())) {
-                tempEmpty.setValues(two);
-                two.makeEmpty();
-                tempEmpty = two;
-            }
+            tempEmpty.setValues(two);
+            two.makeEmpty();
+            tempEmpty = two;
         } else if (e.getSource().equals(three)) {
-            if (three.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(three);
             three.makeEmpty();
-            tempEmpty = three; }
+            tempEmpty = three;
         } else if (e.getSource().equals(four)) {
-            if (four.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(four);
             four.makeEmpty();
             tempEmpty = four;
-            }
         } else if (e.getSource().equals(five)) {
-            if (five.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(five);
             five.makeEmpty();
             tempEmpty = five;
-            }
         } else if (e.getSource().equals(six)) {
-            if (six.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(six);
             six.makeEmpty();
             tempEmpty = six;
-            }
         } else if (e.getSource().equals(seven)) {
-            if (seven.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(seven);
             seven.makeEmpty();
             tempEmpty = seven;
-            }
         } else if (e.getSource().equals(eight)) {
-            if (eight.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(eight);
             eight.makeEmpty();
             tempEmpty = eight;
-            }
         } else if (e.getSource().equals(nine)) {
-            if (nine.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(nine);
             nine.makeEmpty();
             tempEmpty = nine;
-            }
         } else if (e.getSource().equals(ten)) {
-            if (ten.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(ten);
             ten.makeEmpty();
             tempEmpty = ten;
-            }
         } else if (e.getSource().equals(eleven)) {
-            if (eleven.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(eleven);
             eleven.makeEmpty();
             tempEmpty = eleven;
-            }
         } else if (e.getSource().equals(twelve)) {
-            if (twelve.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(twelve);
             twelve.makeEmpty();
             tempEmpty = twelve;
-            }
         } else if (e.getSource().equals(thirteen)) {
-            if (thirteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(thirteen);
             thirteen.makeEmpty();
             tempEmpty = thirteen;
-            }
         } else if (e.getSource().equals(fourteen)) {
-            if (fourteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(fourteen);
             fourteen.makeEmpty();
             tempEmpty = fourteen;
-            }
         } else if (e.getSource().equals(fifteen)) {
-            if (fifteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(fifteen);
             fifteen.makeEmpty();
             tempEmpty = fifteen;
-            }
         } else if (e.getSource().equals(sixteen)) {
-            if (sixteen.isNextTo(tempEmpty.getNumValue())) {
             tempEmpty.setValues(sixteen);
             sixteen.makeEmpty();
             tempEmpty = sixteen;
-            }
         }
         checkIfWon();  // kollar om man vunnit
         if (hasWon) {
-            changeButtonText(); // ändrar newGame's text till "Grattis!"
+           changeButtonText(); // ändrar newGame's text till "Grattis!"
+           hasWon = false;
         }
 
     }
@@ -183,7 +153,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
 
     public void startNewGame() {
         buttonList = createButtonList();
-        Collections.shuffle(buttonList);
+        //Collections.shuffle(buttonList);     // TEST - kommentera bort
         for (int i = 0; i < buttonList.size(); i++) {
             buttonList.get(i).setNumValue(i + 1);
         }
@@ -192,9 +162,12 @@ public class Sprint3Spel extends JFrame implements ActionListener {
             b.setFont(new Font("Helvetica", Font.BOLD, 20));
             game.add(b);
             b.addActionListener(this);
-
         }
         tempEmpty = sixteen;
+         //Test att spelet funkar
+            tempEmpty.setValues(twelve);    // TEST
+            twelve.makeEmpty();             // TEST
+            tempEmpty = twelve;             // TEST
     }
 
     public List<Button> createButtonList() {

@@ -20,7 +20,7 @@ public class Button extends JButton {
     }
 
     public void makeEmpty() {
-        this.setText("");
+        this.setText(" ");
         this.setBackground(Color.BLACK);
     }
 
@@ -50,7 +50,6 @@ public class Button extends JButton {
                     this.getNumValue() == (value-4)){
                 return true;
             }
-            
         } else {
             if(this.getNumValue() == (value + 1)
                     || this.getNumValue() == (value - 1)
