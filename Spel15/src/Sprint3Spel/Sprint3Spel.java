@@ -153,7 +153,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
 
     public void startNewGame() {
         buttonList = createButtonList();
-        //Collections.shuffle(buttonList);     // TEST - kommentera bort
+        Collections.shuffle(buttonList);     // TEST - kommentera bort
         for (int i = 0; i < buttonList.size(); i++) {
             buttonList.get(i).setNumValue(i + 1);
         }
@@ -165,9 +165,9 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         }
         tempEmpty = sixteen;
          //Test att spelet funkar
-            tempEmpty.setValues(twelve);    // TEST
-            twelve.makeEmpty();             // TEST
-            tempEmpty = twelve;             // TEST
+//            tempEmpty.setValues(twelve);    // TEST
+//            twelve.makeEmpty();             // TEST
+//            tempEmpty = twelve;             // TEST
     }
 
     public List<Button> createButtonList() {
