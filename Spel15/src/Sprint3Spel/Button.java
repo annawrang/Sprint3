@@ -59,4 +59,8 @@ public class Button extends JButton {
         }
         return false;
     }
+    
+    public void setWinText() {
+        this.setText("Grattis, du har vunnit! Spela igen");
+    }
 }

@@ -10,14 +10,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.*;
 
 public class Sprint3Spel extends JFrame implements ActionListener {
 
     JPanel panel = new JPanel();
     JPanel game = new JPanel();
-    JButton newGame = new JButton("Nytt spel");
+    Button newGame = new Button("Nytt spel");
     Button one = new Button("1");
     Button two = new Button("2");
     Button three = new Button("3");
@@ -37,7 +36,6 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     Button tempEmpty = new Button(" ");
     protected int emptyValue;
     protected boolean hasWon = false;
-    protected String allNumbers = "";
     List<Button> buttonList = new ArrayList<>();
 
     public Sprint3Spel() {
@@ -46,18 +44,16 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         this.add(panel, BorderLayout.SOUTH);
         this.add(game, BorderLayout.NORTH);
         panel.add(newGame);
-
         game.setLayout(new GridLayout(4, 4));
         startNewGame();    // crates all buttons, adds to game
         newGame.addActionListener(this);
-
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
     }
 
     public void checkIfWon() {  // Kollar att knapparna ligger i ordning
-        allNumbers = "";
+        String allNumbers = "";
         for (Button b : buttonList) {
             allNumbers += b.getText();
         }
@@ -69,11 +65,8 @@ public class Sprint3Spel extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newGame) {
-            newGame.setText("Nytt spel");
             startNewGame();
             hasWon = false;
-            setVisible(true);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
         } else if (e.getSource().equals(one)) {
             if(one.isNextTo(tempEmpty.getNumValue())){
             tempEmpty.setValues(one);
@@ -173,19 +166,16 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         }
         checkIfWon();  // kollar om man vunnit
         if (hasWon) {
-           changeButtonText(); // ändrar newGame's text till "Grattis!"
+           newGame.setWinText(); // ändrar newGame's text till "Grattis!"
            hasWon = false;
         }
 
     }
 
-    public void changeButtonText() {
-        newGame.setText("Grattis, du har vunnit! Tryck här!");
-    }
-
     public void startNewGame() {
         buttonList = createButtonList();
-        Collections.shuffle(buttonList);         // TEST - kommentera bort
+        newGame.setText("Nytt spel");
+        //Collections.shuffle(buttonList);         // TEST - kommentera bort
         for (int i = 0; i < buttonList.size(); i++) {
             buttonList.get(i).setNumValue(i + 1);
         }
@@ -197,9 +187,9 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         }    
         tempEmpty = sixteen;
          //Test att spelet funkar
-//            tempEmpty.setValues(twelve);    // TEST
-//            twelve.makeEmpty();             // TEST
-//            tempEmpty = twelve;             // TEST
+            tempEmpty.setValues(twelve);    // TEST
+            twelve.makeEmpty();             // TEST
+            tempEmpty = twelve;             // TEST
     }
 
     public List<Button> createButtonList() {
@@ -250,8 +240,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         fifteen.setText("15");
         fifteen.setBackground(Color.CYAN);
         buttonList.add(sixteen);
-        sixteen.setText(" ");
-        sixteen.setBackground(Color.BLACK);
+        sixteen.makeEmpty();
 
         return buttonList;
     }
