@@ -52,8 +52,8 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         this.pack();
     }
 
-    public void checkIfWon() {  // Kollar att knapparna ligger i ordning
-        String allNumbers = "";
+    public void checkIfWon() {      // Kollar att knapparna ligger i ordning
+        String allNumbers = "";     // och man har vunnit
         for (Button b : buttonList) {
             allNumbers += b.getText();
         }
@@ -172,10 +172,10 @@ public class Sprint3Spel extends JFrame implements ActionListener {
 
     }
 
-    public void startNewGame() {
-        buttonList = createButtonList();
+    public void startNewGame() {            // blandar knapparna och lägger till
+        buttonList = createButtonList();    // dem till spelet
         newGame.setText("Nytt spel");
-        //Collections.shuffle(buttonList);         // TEST - kommentera bort
+        Collections.shuffle(buttonList);         // TEST - kommentera bort
         for (int i = 0; i < buttonList.size(); i++) {
             buttonList.get(i).setNumValue(i + 1);
         }
@@ -187,12 +187,12 @@ public class Sprint3Spel extends JFrame implements ActionListener {
         }    
         tempEmpty = sixteen;
          //Test att spelet funkar
-            tempEmpty.setValues(twelve);    // TEST
-            twelve.makeEmpty();             // TEST
-            tempEmpty = twelve;             // TEST
+//            tempEmpty.setValues(twelve);    // TEST
+//            twelve.makeEmpty();             // TEST
+//            tempEmpty = twelve;             // TEST
     }
 
-    public List<Button> createButtonList() {
+    public List<Button> createButtonList() { // skapar lista med alla buttons
         buttonList = new ArrayList<>();
         buttonList.add(one);
         one.setText("1");

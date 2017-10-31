@@ -23,7 +23,7 @@ public class Button extends JButton {
         this.setBackground(Color.BLACK);
     }
 
-    public void setValues(Button b) {
+    public void setValues(Button b) {   // ger en knapp en annan knapps utséende
         this.setText(b.getText());
         this.setBackground(b.getBackground());
     }
@@ -36,7 +36,7 @@ public class Button extends JButton {
         return numValue;
     }
 
-    public boolean isNextTo(int value) {
+    public boolean isNextTo(int value) {   
         if (value == 5 || value == 9 || value == 13) {
             if (this.getNumValue() == (value + 1)
                     || this.getNumValue() == (value + 4)
