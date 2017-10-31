@@ -186,7 +186,7 @@ public class Sprint3Spel extends JFrame implements ActionListener {
             b.addActionListener(this);
         }    
         tempEmpty = sixteen;
-         //Test att spelet funkar
+                                              //Test att spelet funkar
 //            tempEmpty.setValues(twelve);    // TEST
 //            twelve.makeEmpty();             // TEST
 //            tempEmpty = twelve;             // TEST
